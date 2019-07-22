@@ -1,0 +1,12 @@
+ejb/UsersEJBInterface.class
+is/data/Power.class
+message/Unmarshall.class
+ejb/CarsEJBInterface.class
+is/data/Price.class
+message/MessageBean.class
+ejb/UsersEJB.class
+is/data/CylinderCapacity.class
+is/data/CarXML.class
+is/data/Distance.class
+is/data/CarCatalog.class
+ejb/CarsEJB.class

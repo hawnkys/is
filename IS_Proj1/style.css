@@ -1,0 +1,50 @@
+.container{
+	margin-left: 100px;
+	margin-right: 100px;	
+}
+
+table{
+	width: 100%;
+	border-spacing:0;
+	text-align: center;
+	border-radius: 4px
+}
+
+table th, tr, td{
+	border: 0;
+}
+
+table th{
+	text-transform: uppercase:
+}
+table tr{
+	background-color: #F5FAFA;
+	color: #00509D;
+}
+
+table tr:first-child{
+	background-color: #00509D;
+	color: white;
+	height: 50px;
+}
+
+table tr:hover:not(:first-child){
+	background-color: #a2c4dc;
+	cursor: pointer;
+	color: white;
+	opacity: 0.5;
+}
+
+table td:first-child{
+	width:1%;
+}
+
+table td:not(:first-child){
+	padding: 15px;
+}
+
+img.logo{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 200px;
+}

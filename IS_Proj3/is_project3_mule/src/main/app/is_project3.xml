@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:quartz="http://www.mulesoft.org/schema/mule/quartz" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:twitter="http://www.mulesoft.org/schema/mule/twitter" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.mulesoft.org/schema/mule/twitter http://www.mulesoft.org/schema/mule/twitter/current/mule-twitter.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/quartz http://www.mulesoft.org/schema/mule/quartz/current/mule-quartz.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <cxf:configuration name="CXF_Configuration" enableMuleSoapHeaders="true" initializeStaticBusInstance="true" doc:name="CXF Configuration"/>
+    <db:mysql-config name="MySQL_Configuration" host="127.0.0.1" port="3306" user="root" password="password" database="isproj3?useSSL=false" doc:name="MySQL Configuration"/>
+    <smtp:gmail-connector name="Gmail" validateConnections="true" doc:name="Gmail"/>
+    <file:connector name="File" outputPattern="Exception.txt" autoDelete="true" outputAppend="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <http:request-config name="HTTP_Request_Configuration" host="127.0.0.1" port="8080" basePath="/Project3-REST/rest/project3webservices" doc:name="HTTP Request Configuration"/>
+    <file:connector name="JSON_File" outputPattern="cars.json" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <twitter:config name="Twitter__Configuration" accessKey="2387812086-gYjukdeRmdG1r69eDsXu7r4U9vptTnjs16vz2gz" accessSecret="4a8NUm2kJw3waE2J9TvRn5nhOxQDvJuXSwOd3crUJnUDF" consumerKey="JGDIcaDdQ0Oax33NxDtRBAHCB" consumerSecret="14YVhtnCBy5D6oqKXE68XXYIctWcbotW2rrfc70HOJg6a9NByE" doc:name="Twitter: Configuration"/>
+    <mulexml:jaxb-context name="JAXB_Context" packageNames="data" doc:name="JAXB Context"/>
+    <flow name="webListFollower">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/listSubscriptions" doc:name="HTTP"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="listAll">
+            <db:parameterized-query><![CDATA[select * from followers;]]></db:parameterized-query>
+        </db:select>
+        <custom-transformer class="is_project3.ListAllFollowers" doc:name="Java"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="webFollow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/follow" doc:name="HTTP"/>
+        <set-variable variableName="email" value="#[message.inboundProperties.'http.query.params'.email]" doc:name="email"/>
+        <set-variable variableName="brand" value="#[message.inboundProperties.'http.query.params'.brand]" doc:name="brand"/>
+        <set-variable variableName="minPrice" value="#[message.inboundProperties.'http.query.params'.minPrice]" doc:name="minPrice"/>
+        <set-variable variableName="maxPrice" value="#[message.inboundProperties.'http.query.params'.maxPrice]" doc:name="maxPrice"/>
+        <logger message="----- Adding follower email=#[flowVars.email] and brand=#[flowVars.brand] and minPrice=#[flowVars.minPrice] and maxPrice=#[flowVars.maxPrice]-----" level="INFO" doc:name="Logger"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="checkFollower">
+            <db:parameterized-query><![CDATA[select * from followers where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+        </db:select>
+        <choice doc:name="Choice">
+            <when expression="#[payload.size()==0]">
+                <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+                    <db:parameterized-query><![CDATA[insert into followers (email, brand, minPrice, maxPrice, confirmed) values (#[flowVars.email], #[flowVars.brand], #[flowVars.minPrice], #[flowVars.maxPrice], 0);]]></db:parameterized-query>
+                </db:insert>
+                <set-payload value="#['Click on the following link to start following the brand: ' ]#[flowVars.brand]#['\n\nLink: http://localhost:8081/confirmFollow?email=']#[flowVars.email]#['&amp;brand=']#[flowVars.brand]" doc:name="emailMSG"/>
+                <smtp:outbound-endpoint host="smtp.gmail.com" responseTimeout="10000" doc:name="SMTP" connector-ref="Gmail" password="password99" port="587" subject="Follow Confirmation" to="#[flowVars.email]" user="isproj3%40gmail.com"/>
+                <set-payload value="#['Follow added successfully, waiting confirmation...']" doc:name="feedback"/>
+            </when>
+            <otherwise>
+                <set-payload value="#[flowVars.email] already follows the brand: #[flowVars.brand]" doc:name="feedback"/>
+            </otherwise>
+        </choice>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="webUnfollow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/unfollow" doc:name="HTTP"/>
+        <set-variable variableName="email" value="#[message.inboundProperties.'http.query.params'.email]" doc:name="Variable"/>
+        <set-variable variableName="brand" value="#[message.inboundProperties.'http.query.params'.brand]" doc:name="brand"/>
+        <logger message="----- Removing follower email=#[flowVars.email] and brand=#[flowVars.brand] -----" level="INFO" doc:name="Logger"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="checkFollower">
+            <db:parameterized-query><![CDATA[select * from followers where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+        </db:select>
+        <choice doc:name="Choice">
+            <when expression="">
+                <set-payload value="#[flowVars.email] does not follow the brand: #[flowVars.brand]" doc:name="feedback"/>
+            </when>
+            <otherwise>
+                <set-payload value="#['Click on the following link to confirm your unfollow of the brand: ' ]#[flowVars.brand]#['\n\nLink: http://localhost:8081/confirmUnfollow?email=']#[flowVars.email]#['&amp;brand=']#[flowVars.brand]" doc:name="emailMSG"/>
+                <smtp:outbound-endpoint host="smtp.gmail.com" port="587" user="isproj3%40gmail.com" password="password99" to="#[flowVars.email]" subject="Unfollow Confirmation" responseTimeout="10000" doc:name="SMTP"/>
+                <set-payload value="#['Please confirm via email, waiting confirmation...']" doc:name="Set Payload"/>
+            </otherwise>
+        </choice>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="listP2Users">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/listUsers" doc:name="HTTP"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/getusers" method="GET" doc:name="HTTP"/>
+        <logger message="users XML = #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+        <mulexml:jaxb-xml-to-object-transformer returnClass="data.ListUsers" encoding="UTF-8" jaxbContext-ref="JAXB_Context" doc:name="XML to JAXB Object"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy"><![CDATA[import data.ListUsers;
+import data.UserXML;
+
+ListUsers list = payload;
+List<UserXML> users = list.getUsers();
+res = "";
+
+for(int i=0;i<users.size();i++) {
+	res += "Username: " + users.get(i).username + ", name: " + users.get(i).name + ", email: " + users.get(i).email + "\n";
+}
+
+return res;
+
+
+return list;]]></scripting:script>
+        </scripting:transformer>
+        <set-variable variableName="usersString" value="#[payload]" doc:name="usersString"/>
+        <set-payload value="#[flowVars.usersString]" doc:name="feedback"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="confirmUnfollow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/confirmUnfollow" doc:name="HTTP"/>
+        <set-variable variableName="email" value="#[message.inboundProperties.'http.query.params'.email]" doc:name="email"/>
+        <set-variable variableName="brand" value="#[message.inboundProperties.'http.query.params'.brand]" doc:name="brand"/>
+        <db:delete config-ref="MySQL_Configuration" doc:name="confUnfollow">
+            <db:parameterized-query><![CDATA[delete from followers where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+        </db:delete>
+        <set-payload value="#['Your unfollow request on the brand: ']#[flowVars.brand]#[',  was processed sucessfully']" doc:name="feedback"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="confirmFollow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/confirmFollow" doc:name="HTTP"/>
+        <set-variable variableName="email" value="#[message.inboundProperties.'http.query.params'.email]" doc:name="email"/>
+        <set-variable variableName="brand" value="#[message.inboundProperties.'http.query.params'.brand]" doc:name="brand"/>
+        <db:update config-ref="MySQL_Configuration" doc:name="confFollow">
+            <db:parameterized-query><![CDATA[update followers set confirmed = 1 where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+        </db:update>
+        <set-payload value="#['You are now following: ']#[flowVars.brand]" doc:name="feedback"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm follow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="admin_tool">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/webservice" doc:name="HTTP"/>
+        <cxf:jaxws-service configuration-ref="CXF_Configuration" serviceClass="is_project3.MyWebService" doc:name="CXF"/>
+        <choice doc:name="Choice">
+            <when expression="method.name.equals('listAll')">
+                <db:select config-ref="MySQL_Configuration" doc:name="listAll">
+                    <db:parameterized-query><![CDATA[select * from followers;]]></db:parameterized-query>
+                </db:select>
+                <custom-transformer class="is_project3.ListAllFollowers" doc:name="Java"/>
+            </when>
+            <when expression="method.name.equals('addFollower')">
+                <set-variable variableName="email" value="#[payload[0]]" doc:name="email"/>
+                <set-variable variableName="brand" value="#[payload[1]]" doc:name="brand"/>
+                <set-variable variableName="minPrice" value="#[payload[2]]" doc:name="minPrice"/>
+                <set-variable variableName="maxPrice" value="#[payload[3]]" doc:name="maxPrice"/>
+                <logger message="----- Adding follower email=#[flowVars.email] and brand=#[flowVars.brand] and minPrice=#[flowVars.minPrice] and maxPrice=#[flowVars.maxPrice]-----" level="INFO" doc:name="Logger"/>
+                <db:select config-ref="MySQL_Configuration" doc:name="checkFollower">
+                    <db:parameterized-query><![CDATA[select * from followers where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+                </db:select>
+                <choice doc:name="Choice">
+                    <when expression="#[payload.size()==0]">
+                        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+                            <db:parameterized-query><![CDATA[insert into followers (email, brand, minPrice, maxPrice, confirmed) values (#[flowVars.email], #[flowVars.brand], #[flowVars.minPrice], #[flowVars.maxPrice], 0);]]></db:parameterized-query>
+                        </db:insert>
+                        <set-payload value="#['Click on the following link to start following the brand: ' ]#[flowVars.brand]#['\n\nLink: http://localhost:8081/confirmFollow?email=']#[flowVars.email]#['&amp;brand=']#[flowVars.brand]" doc:name="emailMSG"/>
+                        <smtp:outbound-endpoint host="smtp.gmail.com" port="587" user="isproj3%40gmail.com" password="password99" connector-ref="Gmail" to="#[flowVars.email]" subject="Follow Confirmation" responseTimeout="10000" doc:name="SMTP"/>
+                        <set-payload value="#['Follow added successfully, waiting confirmation...']" doc:name="feedback"/>
+                    </when>
+                    <otherwise>
+                        <set-payload value="#[flowVars.email] already follows the brand: #[flowVars.brand]" doc:name="feedback"/>
+                    </otherwise>
+                </choice>
+            </when>
+            <when expression="method.name.equals('listUsers')">
+                <logger message="----- Get All Followers From Database -----" level="INFO" doc:name="Logger"/>
+                <http:request config-ref="HTTP_Request_Configuration" path="/getusers" method="GET" doc:name="HTTP"/>
+                <mulexml:jaxb-xml-to-object-transformer returnClass="data.ListUsers" encoding="UTF-8" jaxbContext-ref="JAXB_Context" doc:name="XML to JAXB Object"/>
+                <scripting:transformer doc:name="Groovy">
+                    <scripting:script engine="Groovy"><![CDATA[import data.ListUsers;
+import data.UserXML;
+
+ListUsers list = payload;
+List<UserXML> users = list.getUsers();
+res = "";
+
+for(int i=0;i<users.size();i++) {
+	res += "Username: " + users.get(i).username + ", name: " + users.get(i).name + ", email: " + users.get(i).email + "\n";
+}
+
+return res;
+
+
+return list;]]></scripting:script>
+                </scripting:transformer>
+                <set-variable variableName="usersString" value="#[payload]" doc:name="usersString"/>
+                <set-payload value="#[flowVars.usersString]" doc:name="feedback"/>
+            </when>
+            <otherwise>
+                <set-variable variableName="email" value="#[payload[0]]" doc:name="email"/>
+                <set-variable variableName="brand" value="#[payload[1]]" doc:name="brand"/>
+                <logger message="----- Removing follower email=#[flowVars.email] and brand=#[flowVars.brand] -----" level="INFO" doc:name="Logger"/>
+                <db:select config-ref="MySQL_Configuration" doc:name="checkFollower">
+                    <db:parameterized-query><![CDATA[select * from followers where (email = #[flowVars.email] and brand = #[flowVars.brand]);]]></db:parameterized-query>
+                </db:select>
+                <choice doc:name="Choice">
+                    <when expression="#[payload.size()==0]">
+                        <set-payload value="#[flowVars.email] does not follow the brand: #[flowVars.brand]" doc:name="feedback"/>
+                    </when>
+                    <otherwise>
+                        <set-payload value="#['Click on the following link to confirm your unfollow of the brand: ' ]#[flowVars.brand]#['\n\nLink: http://localhost:8081/confirmUnfollow?email=']#[flowVars.email]#['&amp;brand=']#[flowVars.brand]" doc:name="emailMSG"/>
+                        <smtp:outbound-endpoint host="smtp.gmail.com" port="587" user="isproj3%40gmail.com" password="password99" connector-ref="Gmail" to="#[flowVars.email]" subject="Unfollow Confirmation" responseTimeout="10000" doc:name="SMTP"/>
+                        <set-payload value="#['Please confirm via email, waiting confirmation...']" doc:name="feedback"/>
+                    </otherwise>
+                </choice>
+            </otherwise>
+        </choice>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on admin toll Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="fededback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="getNewCars">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/rest" doc:name="HTTP"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/getcars" method="GET" doc:name="HTTP"/>
+        <logger message="New Cars = #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="newCarsString" value="#[message.payloadAs(java.lang.String)]" doc:name="newCarsString"/>
+        <json:json-to-object-transformer returnClass="java.util.List" encoding="UTF-8" doc:name="JSON to Object"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy"><![CDATA[import data.CarJSON;
+
+List<CarJSON> newCars = payload;
+return newCars;]]></scripting:script>
+        </scripting:transformer>
+        <set-variable variableName="newCars" value="#[payload]" doc:name="newCarsList"/>
+        <flow-ref name="getOldCars" doc:name="Flow Reference"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="getOldCars">
+        <scripting:transformer doc:name="loadOldFile">
+            <scripting:script engine="Groovy"><![CDATA[BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\ruben\\Desktop\\cars.json"));
+
+String sCurrentLine, fileBody = "";
+
+while ((sCurrentLine = br.readLine()) != null) {
+	fileBody += sCurrentLine;
+}
+
+return fileBody;]]></scripting:script>
+        </scripting:transformer>
+        <logger message="Old Cars  = #[payload]" level="INFO" doc:name="Logger"/>
+        <json:json-to-object-transformer returnClass="java.util.List" encoding="UTF-8" doc:name="JSON to Object"/>
+        <scripting:transformer doc:name="Groovy">
+            <scripting:script engine="Groovy"><![CDATA[import data.CarJSON;
+
+List<CarJSON> oldCars = payload;
+return oldCars;]]></scripting:script>
+        </scripting:transformer>
+        <set-variable variableName="oldCars" value="#[payload]" doc:name="OldCarsList"/>
+        <flow-ref name="compareSendAndSave" doc:name="Flow Reference"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="compareSendAndSave">
+        <scripting:transformer doc:name="gerDiffCars">
+            <scripting:script engine="Groovy"><![CDATA[import java.util.ArrayList;
+import data.CarJSON;
+
+ArrayList<CarJSON> newCars = new ArrayList<>();
+newCars = flowVars.newCars;
+ArrayList<CarJSON> oldCars = new ArrayList<>();
+oldCars = flowVars.oldCars;
+
+ArrayList<CarJSON> diffCars = new ArrayList<>();
+boolean exists;
+for(int i=0;i<newCars.size();i++) {
+	exists = false; 
+	for(int j=0;j<oldCars.size();j++) {
+		if(newCars.get(i).id == oldCars.get(j).id){
+			exists = true;
+		}
+	}
+	if(!exists) {
+		diffCars.add(newCars.get(i));
+	}
+}
+
+return diffCars;
+
+
+
+]]></scripting:script>
+        </scripting:transformer>
+        <logger message="number of different cars = #[payload.size()]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="numEmails" value="#[0]" doc:name="numEmails"/>
+        <foreach doc:name="For Each">
+            <set-variable variableName="carBrand" value="#[org.apache.commons.lang3.StringUtils.lowerCase(payload.brand)]" doc:name="carBrand"/>
+            <set-variable variableName="price" value="#[Integer.parseInt(payload.price)]" doc:name="price"/>
+            <logger message="----- aqui + #[flowVars.carBrand] + price + #[flowVars.price]" level="INFO" doc:name="Logger"/>
+            <db:select config-ref="MySQL_Configuration" doc:name="Database">
+                <db:parameterized-query><![CDATA[select * from followers where (brand = #[flowVars.carBrand] and minPrice <= #[flowVars.price] and maxPrice >= #[flowVars.price] and confirmed=1);]]></db:parameterized-query>
+            </db:select>
+            <logger message="--- res = #[payload.size()]" level="INFO" doc:name="Logger"/>
+            <custom-transformer class="is_project3.GetUsers" doc:name="Java"/>
+            <logger message="#[payload] | #[payload.size()]" level="INFO" doc:name="Logger"/>
+            <foreach doc:name="For Each">
+                <logger message="-- vamos #[payload]" level="INFO" doc:name="Logger"/>
+                <set-variable variableName="numEmails" value="#[flowVars.numEmails + 1]" doc:name="incNumEmails"/>
+                <set-variable variableName="email" value="#[payload]" doc:name="userEmail"/>
+                <set-payload value="#['There is a new ']#[flowVars.carBrand]#[' available that costs: ']#[flowVars.price]" doc:name="messageBody"/>
+                <smtp:outbound-endpoint host="smtp.gmail.com" port="587" user="isproj3%40gmail.com" password="password99" connector-ref="Gmail" to="#[flowVars.email]" subject="New Car Available" responseTimeout="10000" doc:name="SMTP"/>
+            </foreach>
+        </foreach>
+        <flow-ref name="computeStats" doc:name="Flow Reference"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="computeStats">
+        <set-variable variableName="totalCars" value=" #[flowVars.newCars.size()]" doc:name="numOfTotalCars"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[select previousDay from statistics;]]></db:parameterized-query>
+        </db:select>
+        <set-variable variableName="previousDay" value="#[payload[0].previousDay]" doc:name="previousDay"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[select totalEmails from statistics;]]></db:parameterized-query>
+        </db:select>
+        <set-variable variableName="totalEmails" value="#[payload[0].totalEmails]" doc:name="totalEmails"/>
+        <flow-ref name="postOnTwitter" doc:name="Flow Reference"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="postOnTwitter">
+        <logger message="totalcars = #[flowVars.totalCars], previous = #[flowVars.previousDay], emails sended = #[flowVars.numEmails] , total emails = #[flowVars.totalEmails]" level="INFO" doc:name="Logger"/>
+        <twitter:update-status config-ref="Twitter__Configuration" status="Were sent #[flowVars.numEmails] emails today! making a total of #[flowVars.totalEmails]. Privious it was #[flowVars.previousDay]. We have a total of #[flowVars.totalCars] to sell" doc:name="Twitter"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+    <flow name="updateStats">
+        <db:update config-ref="MySQL_Configuration" doc:name="updateTotalEmails">
+            <db:parameterized-query><![CDATA[update statistics SET totalEmails=totalEmails+#[flowVars.totalEmails] where id=1;]]></db:parameterized-query>
+        </db:update>
+        <db:update config-ref="MySQL_Configuration" doc:name="updatePreviousDay">
+            <db:parameterized-query><![CDATA[update statistics SET previousDay=#[flowVars.numEmails] where id=1;]]></db:parameterized-query>
+        </db:update>
+        <db:update config-ref="MySQL_Configuration" doc:name="updateTotalCars">
+            <db:parameterized-query><![CDATA[update statistics SET totalCars=#[flowVars.totalCars] where id=1;]]></db:parameterized-query>
+        </db:update>
+        <set-payload value="#[flowVars.'newCarsString']" doc:name="newCarsString"/>
+        <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="cars.json" connector-ref="JSON_File" responseTimeout="10000" doc:name="ReplaceOldCars"/>
+        <set-payload value="#['ola']" doc:name="Set Payload"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Error on confirm unfollow Flow" level="ERROR" doc:name="Logger"/>
+            <set-payload value="#[server.dateTime.format(&quot;dd-MMM-yy hh:mm:ss&quot;).toUpperCase()]#[':  ']#[exception.cause]#[System.getProperty('line.separator')]#['\t  Resulted in: ']#[exception]#[System.getProperty('line.separator')]" doc:name="Set Payload"/>
+            <file:outbound-endpoint path="C:\Users\ruben\Desktop" outputPattern="Execptions.txt" connector-ref="File" responseTimeout="10000" doc:name="File"/>
+            <set-payload value="#['Error processing your request try again later !!! ']" doc:name="feedback"/>
+        </catch-exception-strategy>
+    </flow>
+</mule>

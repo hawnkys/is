@@ -1,0 +1,59 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="catalog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="car" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="brand"/>
+              <xs:element name="cc">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:short">
+                      <xs:attribute type="xs:string" name="unit" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="distance">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:int">
+                      <xs:attribute type="xs:string" name="unit" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="fuel"/>
+              <xs:element type="xs:string" name="image"/>
+              <xs:element type="xs:string" name="model"/>
+              <xs:element name="power">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:short">
+                      <xs:attribute type="xs:string" name="unit" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="price">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:int">
+                      <xs:attribute type="xs:string" name="unit" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="month"/>
+              <xs:element type="xs:short" name="year"/>
+              <xs:element type="xs:string" name="url"/>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="id" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

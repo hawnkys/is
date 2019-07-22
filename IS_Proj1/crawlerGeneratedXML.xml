@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+    <car id="1">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">44978</distance>
+        <fuel>Híbrido (Diesel)</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/44868120_3_1080x720_rev001.jpg</image>
+        <model>E 300</model>
+        <power unit="cv">231</power>
+        <price unit="EUR">42980</price>
+        <month>Abril</month>
+        <year>2015</year>
+    </car>
+    <car id="2">
+        <brand>Land Rover</brand>
+        <cc unit="cm3">3000</cc>
+        <distance unit="km">120000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/19555168_1_1080x720_rev001.jpg</image>
+        <model>Range Rover</model>
+        <power unit="cv">245</power>
+        <price unit="EUR">49000</price>
+        <month>Julho</month>
+        <year>2011</year>
+    </car>
+    <car id="3">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">8000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52746560_1_1080x720_rev001.jpg</image>
+        <model>SLC</model>
+        <power unit="cv">204</power>
+        <price unit="EUR">49750</price>
+        <month>Agosto</month>
+        <year>2016</year>
+    </car>
+    <car id="4">
+        <brand>BMW</brand>
+        <cc unit="cm3">800</cc>
+        <distance unit="km">3480</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/27593070_1_1080x720.jpg</image>
+        <model>F</model>
+        <power unit="cv">85</power>
+        <price unit="EUR">13000</price>
+        <month>Setembro</month>
+        <year>2016</year>
+    </car>
+    <car id="5">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">90000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/46999314_1_1080x720_rev001.jpg</image>
+        <model>E 250</model>
+        <power unit="cv">204</power>
+        <price unit="EUR">39900</price>
+        <month>Maio</month>
+        <year>2014</year>
+    </car>
+    <car id="6">
+        <brand>MINI</brand>
+        <cc unit="cm3">1598</cc>
+        <distance unit="km">56309</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/49392362_1_1080x720_rev001.jpg</image>
+        <model>Countryman</model>
+        <power unit="cv">112</power>
+        <price unit="EUR">21950</price>
+        <month>Outubro</month>
+        <year>2013</year>
+    </car>
+    <car id="7">
+        <brand>Iveco</brand>
+        <cc unit="cm3">2500</cc>
+        <distance unit="km">220000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52759245_2_1080x720_rev001.jpg</image>
+        <power unit="cv">150</power>
+        <price unit="EUR">12000</price>
+        <month>Junho</month>
+        <year>2002</year>
+    </car>
+    <car id="8">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">1950</cc>
+        <distance unit="km">24000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52762940_1_1080x720_rev001.jpg</image>
+        <model>E 220</model>
+        <power unit="cv">194</power>
+        <price unit="EUR">49800</price>
+        <month>Novembro</month>
+        <year>2016</year>
+    </car>
+    <car id="9">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2146</cc>
+        <distance unit="km">11500</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52762960_1_1080x720_rev001.jpg</image>
+        <model>E 220</model>
+        <power unit="cv">194</power>
+        <price unit="EUR">61950</price>
+        <month>Março</month>
+        <year>2017</year>
+    </car>
+    <car id="10">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2200</cc>
+        <distance unit="km">98745</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52747370_1_1080x720_rev001.jpg</image>
+        <model>CLA 220</model>
+        <power unit="cv">177</power>
+        <price unit="EUR">36900</price>
+        <month>Junho</month>
+        <year>2015</year>
+    </car>
+    <car id="11">
+        <brand>Jaguar</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">34000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52763475_1_1080x720.jpg</image>
+        <model>XE</model>
+        <power unit="cv">180</power>
+        <price unit="EUR">35500</price>
+        <month>Junho</month>
+        <year>2015</year>
+    </car>
+    <car id="12">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">73000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52697040_1_1080x720_rev001.jpg</image>
+        <model>A 180</model>
+        <power unit="cv">109</power>
+        <price unit="EUR">24950</price>
+        <month>Novembro</month>
+        <year>2014</year>
+    </car>
+    <car id="13">
+        <brand>MINI</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">52000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52693205_1_1080x720_rev001.jpg</image>
+        <model>Cooper</model>
+        <power unit="cv">192</power>
+        <price unit="EUR">28450</price>
+        <month>Março</month>
+        <year>2015</year>
+    </car>
+    <car id="14">
+        <brand>Audi</brand>
+        <cc unit="cm3">3000</cc>
+        <distance unit="km">119000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51976850_1_1080x720_rev001.jpg</image>
+        <model>Q7</model>
+        <power unit="cv">245</power>
+        <price unit="EUR">40950</price>
+        <month>Agosto</month>
+        <year>2012</year>
+    </car>
+    <car id="15">
+        <brand>BMW</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">89000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50325084_1_1080x720_rev001.jpg</image>
+        <model>320</model>
+        <power unit="cv">184</power>
+        <price unit="EUR">26950</price>
+        <month>Fevereiro</month>
+        <year>2013</year>
+    </car>
+    <car id="16">
+        <brand>Opel</brand>
+        <cc unit="cm3">1300</cc>
+        <distance unit="km">119800</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52767595_17_1080x720.jpg</image>
+        <model>Astra</model>
+        <power unit="cv">90</power>
+        <price unit="EUR">6490</price>
+        <month>Junho</month>
+        <year>2005</year>
+    </car>
+    <car id="17">
+        <brand>Peugeot</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">94000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50324526_1_1080x720.jpg</image>
+        <model>2008</model>
+        <power unit="cv">92</power>
+        <price unit="EUR">14990</price>
+        <month>Abril</month>
+        <year>2015</year>
+    </car>
+    <car id="18">
+        <brand>BMW</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">250</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51214980_1_1080x720_rev001.jpg</image>
+        <model>116</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">27700</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="19">
+        <brand>Audi</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">72000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51232720_1_1080x720_rev001.jpg</image>
+        <model>A3</model>
+        <power unit="cv">110</power>
+        <price unit="EUR">24700</price>
+        <month>Julho</month>
+        <year>2014</year>
+    </car>
+    <car id="20">
+        <brand>BMW</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">220</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51257720_1_1080x720_rev001.jpg</image>
+        <model>420</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">49400</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="21">
+        <brand>BMW</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">200</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51297600_1_1080x720_rev001.jpg</image>
+        <model>116</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">32400</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="22">
+        <brand>VW</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">58000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51531395_1_1080x720_rev001.jpg</image>
+        <model>Passat Variant</model>
+        <power unit="cv">105</power>
+        <price unit="EUR">19700</price>
+        <month>Maio</month>
+        <year>2013</year>
+    </car>
+    <car id="23">
+        <brand>Seat</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">10</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51531950_1_1080x720_rev001.jpg</image>
+        <model>Ateca</model>
+        <power unit="cv">115</power>
+        <price unit="EUR">32700</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="24">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">22000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/49493952_1_1080x720_rev001.jpg</image>
+        <model>CLA 180</model>
+        <power unit="cv">110</power>
+        <price unit="EUR">28700</price>
+        <month>Abril</month>
+        <year>2016</year>
+    </car>
+    <car id="25">
+        <brand>BMW</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">280</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51104160_1_1080x720_rev001.jpg</image>
+        <model>X1</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">39700</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="26">
+        <brand>Audi</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">100</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51067390_1_1080x720_rev001.jpg</image>
+        <model>A3 Sportback</model>
+        <power unit="cv">110</power>
+        <price unit="EUR">27300</price>
+        <month>Setembro</month>
+        <year>2017</year>
+    </car>
+    <car id="27">
+        <brand>BMW</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">290</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51027370_1_1080x720_rev001.jpg</image>
+        <model>116</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">29700</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="28">
+        <brand>Adria</brand>
+        <cc unit="cm3">2800</cc>
+        <distance unit="km">87060</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52183150_1_1080x720_rev002.jpg</image>
+        <model>Coral</model>
+        <power unit="cv">127</power>
+        <price unit="EUR">26000</price>
+        <month>Abril</month>
+        <year>2003</year>
+    </car>
+    <car id="29">
+        <brand>Outra não listada</brand>
+        <cc unit="cm3">1000</cc>
+        <distance unit="km">1</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/37789642_1_1080x720.jpg</image>
+        <model>Moto4</model>
+        <power unit="cv">180</power>
+        <price unit="EUR">31500</price>
+        <month>Março</month>
+        <year>2011</year>
+    </car>
+    <car id="30">
+        <brand>Audi</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">105000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/47469662_1_1080x720_rev001.jpg</image>
+        <model>A4 Allroad</model>
+        <power unit="cv">170</power>
+        <price unit="EUR">25999</price>
+        <month>Junho</month>
+        <year>2011</year>
+    </car>
+    <car id="31">
+        <brand>Land Rover</brand>
+        <cc unit="cm3">2179</cc>
+        <distance unit="km">37000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/49442556_1_1080x720_rev001.jpg</image>
+        <model>Evoque</model>
+        <power unit="cv">152</power>
+        <price unit="EUR">37000</price>
+        <month>Junho</month>
+        <year>2015</year>
+    </car>
+    <car id="32">
+        <brand>Opel</brand>
+        <cc unit="cm3">1248</cc>
+        <distance unit="km">96560</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52779675_1_1080x720_rev001.jpg</image>
+        <model>Tigra TwinTop</model>
+        <power unit="cv">70</power>
+        <price unit="EUR">7250</price>
+        <month>Julho</month>
+        <year>2007</year>
+    </car>
+    <car id="33">
+        <brand>Peugeot</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">121000</distance>
+        <fuel>Híbrido (Diesel)</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48067334_1_1080x720.jpg</image>
+        <model>3008</model>
+        <power unit="cv">200</power>
+        <price unit="EUR">16980</price>
+        <month>Agosto</month>
+        <year>2012</year>
+    </car>
+    <car id="34">
+        <brand>Yamaha</brand>
+        <cc unit="cm3">530</cc>
+        <distance unit="km">1465</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52391945_1_1080x720_rev001.jpg</image>
+        <model>TMAX</model>
+        <power unit="cv">46</power>
+        <price unit="EUR">11700</price>
+        <month>Junho</month>
+        <year>2017</year>
+    </car>
+    <car id="35">
+        <brand>VW</brand>
+        <cc unit="cm3">1598</cc>
+        <distance unit="km">68686</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50768918_1_1080x720.jpg</image>
+        <model>Golf Cabriolet</model>
+        <power unit="cv">105</power>
+        <price unit="EUR">19900</price>
+        <month>Julho</month>
+        <year>2013</year>
+    </car>
+    <car id="36">
+        <brand>BMW</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">147000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52400445_1_1080x720_rev021.jpg</image>
+        <model>520</model>
+        <power unit="cv">184</power>
+        <price unit="EUR">23999</price>
+        <month>Novembro</month>
+        <year>2010</year>
+    </car>
+    <car id="37">
+        <brand>Toyota</brand>
+        <cc unit="cm3">1400</cc>
+        <distance unit="km">143500</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52801145_1_1080x720.jpg</image>
+        <model>Corolla</model>
+        <power unit="cv">90</power>
+        <price unit="EUR">8750</price>
+        <month>Maio</month>
+        <year>2006</year>
+    </car>
+    <car id="38">
+        <brand>Toyota</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">10000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48515676_1_1080x720_rev001.jpg</image>
+        <model>Avensis</model>
+        <power unit="cv">112</power>
+        <price unit="EUR">24980</price>
+        <month>Março</month>
+        <year>2016</year>
+    </car>
+    <car id="39">
+        <brand>Opel</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">18756</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/44147650_1_1080x720_rev001.jpg</image>
+        <model>Astra Sports Tourer</model>
+        <power unit="cv">110</power>
+        <price unit="EUR">20480</price>
+        <month>Maio</month>
+        <year>2016</year>
+    </car>
+    <car id="40">
+        <brand>Fiat</brand>
+        <cc unit="cm3">1200</cc>
+        <distance unit="km">29900</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48223622_1_1080x720_rev001.jpg</image>
+        <model>500</model>
+        <power unit="cv">69</power>
+        <price unit="EUR">11980</price>
+        <month>Março</month>
+        <year>2016</year>
+    </car>
+    <car id="41">
+        <brand>Fiat</brand>
+        <cc unit="cm3">1200</cc>
+        <distance unit="km">25000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48162726_1_1080x720_rev001.jpg</image>
+        <model>Panda</model>
+        <power unit="cv">69</power>
+        <price unit="EUR">8980</price>
+        <month>Março</month>
+        <year>2016</year>
+    </car>
+    <car id="42">
+        <brand>Ford</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">63000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/47864366_1_1080x720_rev001.jpg</image>
+        <model>Focus</model>
+        <power unit="cv">115</power>
+        <price unit="EUR">15980</price>
+        <month>Março</month>
+        <year>2015</year>
+    </car>
+    <car id="43">
+        <brand>Renault</brand>
+        <cc unit="cm3">1500</cc>
+        <distance unit="km">62000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/47863190_1_1080x720_rev001.jpg</image>
+        <model>Clio</model>
+        <power unit="cv">90</power>
+        <price unit="EUR">13980</price>
+        <month>Junho</month>
+        <year>2015</year>
+    </car>
+    <car id="44">
+        <brand>Opel</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">87000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/51020465_1_1080x720_rev001.jpg</image>
+        <model>Insignia Sports Tourer</model>
+        <power unit="cv">130</power>
+        <price unit="EUR">15980</price>
+        <month>Novembro</month>
+        <year>2010</year>
+    </car>
+    <car id="45">
+        <brand>Nissan</brand>
+        <cc unit="cm3">1</cc>
+        <distance unit="km">11374</distance>
+        <fuel>Eléctrico</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/45640192_1_1080x720_rev001.jpg</image>
+        <model>Leaf</model>
+        <power unit="cv">109</power>
+        <price unit="EUR">20980</price>
+        <month>Junho</month>
+        <year>2015</year>
+    </car>
+    <car id="46">
+        <brand>Audi</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">185000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/41500216_1_1080x720_rev001.jpg</image>
+        <model>A4 Avant</model>
+        <power unit="cv">143</power>
+        <price unit="EUR">15890</price>
+        <month>Novembro</month>
+        <year>2008</year>
+    </car>
+    <car id="47">
+        <brand>VW</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">18000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/47863316_1_1080x720_rev001.jpg</image>
+        <model>Scirocco</model>
+        <power unit="cv">150</power>
+        <price unit="EUR">29980</price>
+        <month>Março</month>
+        <year>2016</year>
+    </car>
+    <car id="48">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">3724</cc>
+        <distance unit="km">84000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52808870_1_1080x720_rev002.jpg</image>
+        <model>SL 350</model>
+        <power unit="cv">250</power>
+        <price unit="EUR">38000</price>
+        <month>Novembro</month>
+        <year>2004</year>
+    </car>
+    <car id="49">
+        <brand>VW</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">121000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48117742_1_1080x720.jpg</image>
+        <model>Golf Variant</model>
+        <power unit="cv">110</power>
+        <price unit="EUR">15990</price>
+        <month>Novembro</month>
+        <year>2014</year>
+    </car>
+    <car id="50">
+        <brand>Chevrolet</brand>
+        <cc unit="cm3">1998</cc>
+        <distance unit="km">95000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52818765_1_1080x720.jpg</image>
+        <model>Captiva</model>
+        <power unit="cv">150</power>
+        <price unit="EUR">13000</price>
+        <month>Dezembro</month>
+        <year>2008</year>
+    </car>
+    <car id="51">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">39100</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48235476_1_1080x720_rev008.jpg</image>
+        <model>320</model>
+        <power unit="cv">184</power>
+        <price unit="EUR">29950</price>
+        <month>Fevereiro</month>
+        <year>2015</year>
+    </car>
+    <car id="52">
+        <brand>Fiat</brand>
+        <cc unit="cm3">1368</cc>
+        <distance unit="km">70000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52819920_1_1080x720_rev001.jpg</image>
+        <model>500</model>
+        <power unit="cv">200</power>
+        <price unit="EUR">14950</price>
+        <month>Outubro</month>
+        <year>2010</year>
+    </car>
+    <car id="53">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">65000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/42290332_1_1080x720.jpg</image>
+        <model>C 220</model>
+        <power unit="cv">170</power>
+        <price unit="EUR">39990</price>
+        <month>Janeiro</month>
+        <year>2015</year>
+    </car>
+    <car id="54">
+        <brand>Land Rover</brand>
+        <cc unit="cm3">3000</cc>
+        <distance unit="km">161000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/45153158_6_1080x720.jpg</image>
+        <model>Range Rover</model>
+        <power unit="cv">292</power>
+        <price unit="EUR">48900</price>
+        <month>Maio</month>
+        <year>2014</year>
+    </car>
+    <car id="55">
+        <brand>Iveco</brand>
+        <cc unit="cm3">1100</cc>
+        <distance unit="km">500000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52960235_1_1080x720_rev001.jpg</image>
+        <model>Ecostralis 460 CV E6 2014 40 Ton.</model>
+        <power unit="cv">460</power>
+        <price unit="EUR">55350</price>
+        <month>Maio</month>
+        <year>2014</year>
+    </car>
+    <car id="56">
+        <brand>Lexus</brand>
+        <cc unit="cm3">3490</cc>
+        <distance unit="km">118000</distance>
+        <fuel>Híbrido (Gasolina)</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52961525_24_1080x720.jpg</image>
+        <model>RX 450h</model>
+        <power unit="cv">299</power>
+        <price unit="EUR">30000</price>
+        <month>Janeiro</month>
+        <year>2011</year>
+    </car>
+    <car id="57">
+        <brand>BMW</brand>
+        <cc unit="cm3">4999</cc>
+        <distance unit="km">179000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52964445_1_1080x720.jpg</image>
+        <model>M5</model>
+        <power unit="cv">507</power>
+        <price unit="EUR">31500</price>
+        <month>Maio</month>
+        <year>2005</year>
+    </car>
+    <car id="58">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">14296</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/41273796_1_1080x720.jpg</image>
+        <model>GLC 250</model>
+        <power unit="cv">204</power>
+        <price unit="EUR">59980</price>
+        <month>Novembro</month>
+        <year>2016</year>
+    </car>
+    <car id="59">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">2143</cc>
+        <distance unit="km">245000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52602190_1_1080x720_rev001.jpg</image>
+        <model>C 220</model>
+        <power unit="cv">170</power>
+        <price unit="EUR">17900</price>
+        <month>Agosto</month>
+        <year>2011</year>
+    </car>
+    <car id="60">
+        <brand>Opel</brand>
+        <cc unit="cm3">1364</cc>
+        <distance unit="km">20397</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52959820_1_1080x720_rev001.jpg</image>
+        <model>Astra GTC</model>
+        <power unit="cv">140</power>
+        <price unit="EUR">14950</price>
+        <month>Março</month>
+        <year>2013</year>
+    </car>
+    <car id="61">
+        <brand>Mitsubishi</brand>
+        <cc unit="cm3">1798</cc>
+        <distance unit="km">135842</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52763180_1_1080x720_rev001.jpg</image>
+        <model>Lancer Sportback</model>
+        <power unit="cv">150</power>
+        <price unit="EUR">11990</price>
+        <month>Setembro</month>
+        <year>2010</year>
+    </car>
+    <car id="62">
+        <brand>BMW</brand>
+        <cc unit="cm3">2000</cc>
+        <distance unit="km">41000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48758334_3_1080x720.jpg</image>
+        <model>320</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">34850</price>
+        <month>Junho</month>
+        <year>2016</year>
+    </car>
+    <car id="63">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">110232</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52871755_1_1080x720_rev001.jpg</image>
+        <model>420</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">38900</price>
+        <month>Dezembro</month>
+        <year>2014</year>
+    </car>
+    <car id="64">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">1460</cc>
+        <distance unit="km">64324</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52825650_1_1080x720_rev001.jpg</image>
+        <model>A 180</model>
+        <power unit="cv">109</power>
+        <price unit="EUR">23500</price>
+        <month>Abril</month>
+        <year>2014</year>
+    </car>
+    <car id="65">
+        <brand>Ford</brand>
+        <cc unit="cm3">1997</cc>
+        <distance unit="km">118453</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52825660_1_1080x720_rev001.jpg</image>
+        <model>S-Max</model>
+        <power unit="cv">163</power>
+        <price unit="EUR">25900</price>
+        <month>Junho</month>
+        <year>2013</year>
+    </car>
+    <car id="66">
+        <brand>MINI</brand>
+        <cc unit="cm3">1498</cc>
+        <distance unit="km">13466</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50506340_1_1080x720_rev001.jpg</image>
+        <model>Clubman</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">26500</price>
+        <month>Fevereiro</month>
+        <year>2016</year>
+    </car>
+    <car id="67">
+        <brand>VW</brand>
+        <cc unit="cm3">1390</cc>
+        <distance unit="km">80460</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50307056_1_1080x720_rev001.jpg</image>
+        <model>Tiguan</model>
+        <power unit="cv">150</power>
+        <price unit="EUR">12900</price>
+        <month>Agosto</month>
+        <year>2008</year>
+    </car>
+    <car id="68">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">6811</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50500688_1_1080x720_rev001.jpg</image>
+        <model>320</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">44950</price>
+        <month>Maio</month>
+        <year>2016</year>
+    </car>
+    <car id="69">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">25000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52793740_1_1080x720_rev001.jpg</image>
+        <model>218 Active Tourer</model>
+        <power unit="cv">150</power>
+        <price unit="EUR">33750</price>
+        <month>Maio</month>
+        <year>2016</year>
+    </car>
+    <car id="70">
+        <brand>BMW</brand>
+        <cc unit="cm3">1496</cc>
+        <distance unit="km">28000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52763665_1_1080x720_rev001.jpg</image>
+        <model>116</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">31450</price>
+        <month>Outubro</month>
+        <year>2016</year>
+    </car>
+    <car id="71">
+        <brand>MINI</brand>
+        <cc unit="cm3">1496</cc>
+        <distance unit="km">21350</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52103460_1_1080x720_rev001.jpg</image>
+        <model>Cooper</model>
+        <power unit="cv">116</power>
+        <price unit="EUR">23750</price>
+        <month>Junho</month>
+        <year>2016</year>
+    </car>
+    <car id="72">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">25500</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52746045_1_1080x720_rev001.jpg</image>
+        <model>520</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">45750</price>
+        <month>Abril</month>
+        <year>2016</year>
+    </car>
+    <car id="73">
+        <brand>Peugeot</brand>
+        <cc unit="cm3">2200</cc>
+        <distance unit="km">289000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50611174_1_1080x720_rev001.jpg</image>
+        <model>607</model>
+        <power unit="cv">133</power>
+        <price unit="EUR">5950</price>
+        <month>Fevereiro</month>
+        <year>2005</year>
+    </car>
+    <car id="74">
+        <brand>BMW</brand>
+        <cc unit="cm3">2993</cc>
+        <distance unit="km">39500</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/49099186_5_1080x720_rev056.jpg</image>
+        <model>730</model>
+        <power unit="cv">265</power>
+        <price unit="EUR">88750</price>
+        <month>Fevereiro</month>
+        <year>2016</year>
+    </car>
+    <car id="75">
+        <brand>BMW</brand>
+        <cc unit="cm3">1995</cc>
+        <distance unit="km">21500</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50500168_1_1080x720_rev001.jpg</image>
+        <model>420</model>
+        <power unit="cv">190</power>
+        <price unit="EUR">46950</price>
+        <month>Novembro</month>
+        <year>2016</year>
+    </car>
+    <car id="76">
+        <brand>MINI</brand>
+        <cc unit="cm3">1998</cc>
+        <distance unit="km">11750</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/50496602_1_1080x720_rev001.jpg</image>
+        <model>John Cooper Works</model>
+        <power unit="cv">231</power>
+        <price unit="EUR">43950</price>
+        <month>Março</month>
+        <year>2017</year>
+    </car>
+    <car id="77">
+        <brand>Audi</brand>
+        <cc unit="cm3">1197</cc>
+        <distance unit="km">91047</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52959800_1_1080x720_rev001.jpg</image>
+        <model>A3 Cabrio</model>
+        <power unit="cv">105</power>
+        <price unit="EUR">14750</price>
+        <month>Junho</month>
+        <year>2011</year>
+    </car>
+    <car id="78">
+        <brand>Ford</brand>
+        <cc unit="cm3">2179</cc>
+        <distance unit="km">240000</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52779660_1_1080x720.jpg</image>
+        <model>S-Max</model>
+        <power unit="cv">175</power>
+        <price unit="EUR">12000</price>
+        <month>Abril</month>
+        <year>2008</year>
+    </car>
+    <car id="79">
+        <brand>VW</brand>
+        <cc unit="cm3">1600</cc>
+        <distance unit="km">128671</distance>
+        <fuel>Diesel</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/52665070_1_1080x720.jpg</image>
+        <model>Passat Variant</model>
+        <power unit="cv">105</power>
+        <price unit="EUR">15000</price>
+        <month>Agosto</month>
+        <year>2012</year>
+    </car>
+    <car id="80">
+        <brand>Mercedes-Benz</brand>
+        <cc unit="cm3">1991</cc>
+        <distance unit="km">37000</distance>
+        <fuel>Gasolina</fuel>
+        <image>https://carspt-images.akamaized.net/images_carspt/48593728_11_1080x720_rev010.jpg</image>
+        <model>A 250</model>
+        <power unit="cv">218</power>
+        <price unit="EUR">29000</price>
+        <month>Dezembro</month>
+        <year>2012</year>
+    </car>
+</catalog>
